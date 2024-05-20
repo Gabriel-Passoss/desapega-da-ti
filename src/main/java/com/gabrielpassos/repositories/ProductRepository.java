@@ -1,15 +1,13 @@
 package com.gabrielpassos.repositories;
 
 import com.gabrielpassos.entities.Product;
-import java.util.ArrayList;
-
-import java.util.Optional;
+import java.util.List;
 
 public interface ProductRepository {
 
-    public Optional<Product> findProductByName(String name);
+    public Product findById(String name);
 
-    public ArrayList findAll();
+    public List findAll();
 
     public boolean create(Product product);
 
