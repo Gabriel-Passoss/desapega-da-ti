@@ -13,5 +13,5 @@ public interface ProductRepository {
 
     public boolean update(Product product);
 
-    public boolean delete(Product product);
+    public boolean delete(int id);
 }

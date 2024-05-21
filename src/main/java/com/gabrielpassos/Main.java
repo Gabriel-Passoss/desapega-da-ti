@@ -16,6 +16,9 @@ public class Main {
         //System.out.println(productService.findAll());
         //
         // READ ONE PRODUCT
-        System.out.println(productService.findById(1));
+        //System.out.println(productService.findById(1));
+        //
+        // DELETE
+        productService.delete(1);
     }
 }

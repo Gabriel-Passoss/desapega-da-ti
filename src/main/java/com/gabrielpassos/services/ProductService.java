@@ -107,4 +107,28 @@ public class ProductService {
             return null;
         }
     }
+
+    public boolean delete(int id) {
+        try {
+            if (id <= 0) {
+                throw new IllegalArgumentException("ID do produto deve ser positivo");
+            }
+
+            boolean isDeleted = dao.delete(id);
+
+            if (isDeleted) {
+                System.out.println("Produto com ID: " + id + " deletado com sucesso!");
+                return true;
+            } else {
+                System.out.println("Não foi possível cadastrar o produto.");
+                return false;
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("Erro na validação do ID: " + e.getMessage());
+            return false;
+        } catch (Exception e) {
+            System.out.println("Erro ao deletar o produto: " + e.getMessage());
+            return false;
+        }
+    }
 }

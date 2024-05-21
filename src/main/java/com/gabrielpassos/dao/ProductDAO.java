@@ -117,7 +117,17 @@ public class ProductDAO implements ProductRepository {
     }
 
     @Override
-    public boolean delete(Product product) {
-        return true;
+    public boolean delete(int id) {
+        String sql = "DELETE FROM products WHERE id = ?";
+
+        try (PreparedStatement stmt = db.getConnection().prepareStatement(sql)) {
+            stmt.setInt(1, id);
+
+            int rowsAffected = stmt.executeUpdate();
+
+            return rowsAffected > 0;
+        } catch (SQLException erro) {
+            throw new RuntimeException("Erro ao deletar o produto com ID " + id + ": " + erro.getMessage());
+        }
     }
 }
