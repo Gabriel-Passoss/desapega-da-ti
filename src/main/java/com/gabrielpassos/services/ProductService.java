@@ -65,4 +65,20 @@ public class ProductService {
             return false;
         }
     }
+
+    public List findAll() {
+        try {
+            List<Product> products = dao.findAll();
+            
+            if (products.isEmpty()) {
+                System.out.println("Nenhum produto encontrado.");
+            } else {
+                System.out.println(products.size() + " produtos encontrados.");
+            }
+            return products;
+        } catch (Exception e) {
+            System.out.println("Erro ao buscar todos os produtos: " + e.getMessage());
+            return List.of();
+        }
+    }
 }

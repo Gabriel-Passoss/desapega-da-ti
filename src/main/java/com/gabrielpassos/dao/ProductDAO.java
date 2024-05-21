@@ -8,16 +8,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ProductDAO implements ProductRepository {
 
     private final MySqlDriver db;
-    private final List<Product> productList;
 
     public ProductDAO() {
         this.db = new MySqlDriver();
-        this.productList = new ArrayList<>();
     }
 
     public int getMaxID() {
@@ -46,7 +45,27 @@ public class ProductDAO implements ProductRepository {
 
     @Override
     public List findAll() {
-        return null;
+        String sql = "SELECT * FROM products";
+        List<Product> productList = new ArrayList<>();
+
+        try (PreparedStatement stmt = db.getConnection().prepareStatement(sql); ResultSet res = stmt.executeQuery()) {
+
+            while (res.next()) {
+                int id = res.getInt("id");
+                String name = res.getString("name");
+                String description = res.getString("description");
+                int quantity = res.getInt("quantity");
+                double price = res.getDouble("price");
+                Date createdAt = res.getDate("created_at");
+
+                Product product = new Product(id, name, description, quantity, price, createdAt);
+                productList.add(product);
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao buscar todos os produtos: " + e.getMessage());
+        }
+
+        return productList;
     }
 
     @Override
