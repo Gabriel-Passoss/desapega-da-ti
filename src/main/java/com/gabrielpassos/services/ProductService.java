@@ -69,7 +69,7 @@ public class ProductService {
     public List findAll() {
         try {
             List<Product> products = dao.findAll();
-            
+
             if (products.isEmpty()) {
                 System.out.println("Nenhum produto encontrado.");
             } else {
@@ -79,6 +79,32 @@ public class ProductService {
         } catch (Exception e) {
             System.out.println("Erro ao buscar todos os produtos: " + e.getMessage());
             return List.of();
+        }
+    }
+
+    public Product findById(int id) {
+        try {
+            if (id <= 0) {
+                throw new IllegalArgumentException("ID do produto deve ser maior que zero");
+            }
+
+            Product product = dao.findById(id);
+
+            if (product != null) {
+                System.out.println("Produto com ID: " + id + " encontrado com sucesso!");
+                return product;
+
+            } else {
+                System.out.println("Produto com ID: " + id + " não encontrado.");
+                return null;
+            }
+
+        } catch (IllegalArgumentException e) {
+            System.out.println("Erro na validação do ID: " + e.getMessage());
+            return null;
+        } catch (Exception e) {
+            System.out.println("Erro ao buscar o produto: " + e.getMessage());
+            return null;
         }
     }
 }

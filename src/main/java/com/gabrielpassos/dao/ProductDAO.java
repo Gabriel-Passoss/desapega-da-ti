@@ -38,8 +38,29 @@ public class ProductDAO implements ProductRepository {
     }
 
     @Override
-    public Product findById(String name) {
-        return null;
+    public Product findById(int id) {
+        String sql = "SELECT * FROM products WHERE id = ?";
+
+        try (PreparedStatement stmt = db.getConnection().prepareStatement(sql)) {
+
+            stmt.setInt(1, id);
+            ResultSet res = stmt.executeQuery();
+
+            if (res.next()) {
+                int productId = res.getInt("id");
+                String name = res.getString("name");
+                String description = res.getString("description");
+                int quantity = res.getInt("quantity");
+                double price = res.getDouble("price");
+                Date createdAt = res.getDate("created_at");
+
+                return new Product(productId, name, description, quantity, price, createdAt);
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao buscar o produto: " + e.getMessage());
+        }
 
     }
 

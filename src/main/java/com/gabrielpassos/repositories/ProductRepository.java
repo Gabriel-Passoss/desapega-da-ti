@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface ProductRepository {
 
-    public Product findById(String name);
+    public Product findById(int id);
 
     public List findAll();
 

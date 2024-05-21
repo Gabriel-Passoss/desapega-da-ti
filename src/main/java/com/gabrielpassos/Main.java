@@ -10,11 +10,12 @@ public class Main {
         ProductService productService = new ProductService(productDAO);
 
         // CREATE
-        productService.create("Mouse Optico", "description do mouse optico multlaser 4000 DPI.", 2, 125.99);
+        //productService.create("Mouse Optico", "description do mouse optico multlaser 4000 DPI.", 2, 125.99);
         //
         // READ ALL PRODUCTS
-        //List<Product> products = productService.findAll();
-        System.out.println(productService.findAll());
+        //System.out.println(productService.findAll());
         //
+        // READ ONE PRODUCT
+        System.out.println(productService.findById(1));
     }
 }
