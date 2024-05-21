@@ -1,24 +1,26 @@
 package com.gabrielpassos.entities;
 
+import java.util.Date;
+
 public class Product {
+
     private int id;
-
     private String name;
-
+    private String description;
+    private int quantity;
     private Double price;
+    private Date createdAt;
 
-    private String SKU;
-
-    public Product(int id, String name, Double price, String SKU) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.SKU = SKU;
+    public Product() {
     }
 
-    public Product(String name, Double price) {
+    public Product(int id, String name, String description, int quantity, Double price, Date createdAt) {
+        this.id = id;
         this.name = name;
+        this.description = description;
+        this.quantity = quantity;
         this.price = price;
+        this.createdAt = createdAt;
     }
 
     public int getId() {
@@ -37,6 +39,22 @@ public class Product {
         this.name = name;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     public Double getPrice() {
         return price;
     }
@@ -45,11 +63,23 @@ public class Product {
         this.price = price;
     }
 
-    public String getSKU() {
-        return SKU;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public void setSKU(String SKU) {
-        this.SKU = SKU;
+    public void setCreatedAt(Date date) {
+
+        this.createdAt = date;
+    }
+
+    @Override
+    public String toString() {
+
+        return "ID: " + this.id
+                + "\nName: " + this.name
+                + "\nDescription: " + this.description
+                + "\nQuantity: " + this.quantity
+                + "\nPrice: " + this.price
+                + "\nCreated at: " + this.createdAt;
     }
 }
