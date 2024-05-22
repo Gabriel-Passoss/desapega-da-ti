@@ -1,11 +1,10 @@
 package com.gabrielpassos;
 
-import com.gabrielpassos.ui.Index;
+import com.gabrielpassos.ui.IndexPage;
 
 public class Main {
     public static void main(String[] args) {
-        var panel = new Index();
-                
+        IndexPage panel = new IndexPage();  
         panel.setVisible(true);
     }
 }
