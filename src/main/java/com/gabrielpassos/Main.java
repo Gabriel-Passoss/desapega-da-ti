@@ -19,6 +19,10 @@ public class Main {
         //System.out.println(productService.findById(1));
         //
         // DELETE
-        productService.delete(1);
+        //productService.delete(1);
+        //
+        // UPDATE
+        productService.update(1, "Teclado Mecânico ", "description.", 2, 125.99);
+
     }
 }

@@ -131,4 +131,50 @@ public class ProductService {
             return false;
         }
     }
+
+    public boolean update(int id, String name, String description, int quantity, double price) {
+        try {
+
+            if (name == null || name.isEmpty() || name.length() < 2) {
+                throw new IllegalArgumentException("Nome do produto não pode ser nulo, vazio ou menor que dois caracteres");
+            }
+
+            if (description == null || description.isEmpty() || description.length() < 10) {
+                throw new IllegalArgumentException("Descrição do produto não pode ser nula, vazia ou menor que dez caracteres");
+            }
+
+            if (quantity <= 0) {
+                throw new IllegalArgumentException("Quantidade tem que ser maior que zero");
+            }
+
+            if (price <= 0) {
+                throw new IllegalArgumentException("Preço tem que ser maior que zero");
+            }
+
+            Product productExists = dao.findById(id);
+
+            if (productExists == null) {
+                System.out.println("Produto com ID: " + id + " não encontrado.");
+                return false;
+            }
+
+            Product product = new Product(id, name, description, quantity, price, productExists.getCreatedAt());
+
+            boolean isUpdated = dao.update(product);
+
+            if (isUpdated) {
+                System.out.println("Produto com ID: " + id + " atualizado com sucesso!");
+                return true;
+            } else {
+                System.out.println("Falha ao atualizar o produto com ID: " + id);
+                return false;
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("Erro na validação dos dados informados: " + e.getMessage());
+            return false;
+        } catch (Exception e) {
+            System.out.println("Erro ao atualizar o produto: " + e.getMessage());
+            return false;
+        }
+    }
 }

@@ -113,7 +113,25 @@ public class ProductDAO implements ProductRepository {
 
     @Override
     public boolean update(Product product) {
-        return true;
+        String sql = "UPDATE products SET name = ?, description = ?, quantity = ?, price = ?, created_at = ?  WHERE id = ?";
+
+        try (PreparedStatement stmt = db.getConnection().prepareStatement(sql)) {
+
+            stmt.setString(1, product.getName());
+            stmt.setString(2, product.getDescription());
+            stmt.setInt(3, product.getQuantity());
+            stmt.setDouble(4, product.getPrice());
+            stmt.setDate(5, new java.sql.Date(product.getCreatedAt().getTime()));
+            stmt.setInt(6, product.getId());
+
+            stmt.execute();
+
+            return true;
+
+        } catch (SQLException e) {
+            System.out.println("Erro ao atualizar o produto: " + e.getMessage());
+            return false;
+        }
     }
 
     @Override
