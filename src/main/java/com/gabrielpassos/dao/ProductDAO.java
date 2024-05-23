@@ -19,24 +19,6 @@ public class ProductDAO implements ProductRepository {
         this.db = new MySqlDriver();
     }
 
-    public int getMaxID() {
-        String sql = "SELECT MAX(id) id FROM products";
-
-        try (PreparedStatement stmt = db.getConnection().prepareStatement(sql)) {
-            ResultSet res = stmt.executeQuery();
-
-            if (res.next()) {
-
-                return res.getInt("id");
-            } else {
-                return 0;
-            }
-
-        } catch (SQLException e) {
-            throw new RuntimeException("Erro ao obter o maior ID: " + e.getMessage());
-        }
-    }
-
     @Override
     public Product findById(int id) {
         String sql = "SELECT * FROM products WHERE id = ?";
@@ -80,6 +62,7 @@ public class ProductDAO implements ProductRepository {
                 Date createdAt = res.getDate("created_at");
 
                 Product product = new Product(id, name, description, quantity, price, createdAt);
+
                 productList.add(product);
             }
         } catch (SQLException e) {
@@ -91,16 +74,15 @@ public class ProductDAO implements ProductRepository {
 
     @Override
     public boolean create(Product product) {
-        String sql = "INSERT INTO products(id, name, description, quantity, price, created_at) VALUES(?,?,?,?,?,?)";
+        String sql = "INSERT INTO products(name, description, quantity, price, created_at) VALUES(?,?,?,?,?)";
 
         try (PreparedStatement stmt = db.getConnection().prepareStatement(sql)) {
 
-            stmt.setInt(1, product.getId());
-            stmt.setString(2, product.getName());
-            stmt.setString(3, product.getDescription());
-            stmt.setInt(4, product.getQuantity());
-            stmt.setDouble(5, product.getPrice());
-            stmt.setDate(6, new java.sql.Date(product.getCreatedAt().getTime()));
+            stmt.setString(1, product.getName());
+            stmt.setString(2, product.getDescription());
+            stmt.setInt(3, product.getQuantity());
+            stmt.setDouble(4, product.getPrice());
+            stmt.setDate(5, new java.sql.Date(product.getCreatedAt().getTime()));
 
             stmt.execute();
 

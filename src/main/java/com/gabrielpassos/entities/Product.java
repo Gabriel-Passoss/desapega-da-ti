@@ -14,6 +14,14 @@ public class Product {
     public Product() {
     }
 
+    public Product(String name, String description, int quantity, Double price) {
+        this.name = name;
+        this.description = description;
+        this.quantity = quantity;
+        this.price = price;
+        this.createdAt = new Date();
+    }
+
     public Product(int id, String name, String description, int quantity, Double price, Date createdAt) {
         this.id = id;
         this.name = name;
@@ -75,8 +83,7 @@ public class Product {
     @Override
     public String toString() {
 
-        return "ID: " + this.id
-                + "\nName: " + this.name
+        return "Name: " + this.name
                 + "\nDescription: " + this.description
                 + "\nQuantity: " + this.quantity
                 + "\nPrice: " + this.price

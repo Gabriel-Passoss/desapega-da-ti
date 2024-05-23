@@ -14,18 +14,6 @@ public class ProductService {
         this.dao = dao;
     }
 
-    public int getMaxID() {
-        try {
-            int maxID = dao.getMaxID();
-
-            return maxID;
-        } catch (Exception e) {
-            System.out.println("Erro ao obter o máximo ID: " + e.getMessage());
-            return -1;
-        }
-
-    }
-
     public boolean create(String name, String description, int quantity, double price) {
         try {
             if (name == null || name.isEmpty() || name.length() < 2) {
@@ -43,11 +31,7 @@ public class ProductService {
                 throw new IllegalArgumentException("Preço tem que ser maior que zero");
             }
 
-            int id = this.getMaxID() + 1;
-
-            Date date = new Date();
-
-            Product product = new Product(id, name, description, quantity, price, date);
+            Product product = new Product(name, description, quantity, price);
 
             boolean isCreated = dao.create(product);
             if (isCreated) {
@@ -158,7 +142,7 @@ public class ProductService {
                 return false;
             }
 
-            Product product = new Product(id, name, description, quantity, price, productExists.getCreatedAt());
+            Product product = new Product(productExists.getId(), name, description, quantity, price, productExists.getCreatedAt());
 
             boolean isUpdated = dao.update(product);
 
