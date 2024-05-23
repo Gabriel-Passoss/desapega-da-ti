@@ -15,6 +15,8 @@ public class MySqlDriver {
         try {
             if (connection == null) {
                 connection = DriverManager.getConnection(this.databaseUrl, this.user, this.password);
+                
+                System.out.println("Database Connected!");
 
                 return connection;
             }

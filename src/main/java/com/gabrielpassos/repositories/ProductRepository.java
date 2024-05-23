@@ -1,15 +1,19 @@
 package com.gabrielpassos.repositories;
 
 import com.gabrielpassos.entities.Product;
-
-import java.util.Optional;
+import java.util.List;
 
 public interface ProductRepository {
-    public Optional<Product> findProductByName(String name);
 
-    public void create(Product product);
+    public Product findById(int id);
 
-    public void update(Product product);
+    public List findAll();
 
-    public void delete(Product product);
+    public boolean create(Product product);
+
+    public boolean update(Product product);
+
+    public boolean delete(int id);
+
+    public List findByName(String name);
 }
