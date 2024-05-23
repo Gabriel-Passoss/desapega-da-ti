@@ -130,4 +130,33 @@ public class ProductDAO implements ProductRepository {
             throw new RuntimeException("Erro ao deletar o produto com ID " + id + ": " + erro.getMessage());
         }
     }
+
+    @Override
+    public List<Product> findByName(String name) {
+        String sql = "SELECT * FROM products WHERE name LIKE ?";
+        List<Product> products = new ArrayList<>();
+
+        try (PreparedStatement stmt = db.getConnection().prepareStatement(sql)) {
+
+            stmt.setString(1, "%" + name + "%");
+            ResultSet res = stmt.executeQuery();
+
+            if (res.next()) {
+                int id = res.getInt("id");
+                String productName = res.getString("name");
+                String description = res.getString("description");
+                int quantity = res.getInt("quantity");
+                double price = res.getDouble("price");
+                Date createdAt = res.getDate("created_at");
+
+                products.add(new Product(id, productName, description, quantity, price, createdAt));
+            }
+            
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao buscar o produto: " + e.getMessage());
+        }
+
+        return products;
+
+    }
 }

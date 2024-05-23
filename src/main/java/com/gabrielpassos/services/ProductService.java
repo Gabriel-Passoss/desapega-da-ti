@@ -161,4 +161,20 @@ public class ProductService {
             return false;
         }
     }
+
+    public List<Product> findByName(String name) {
+        try {
+            if (name == null || name.isEmpty()) {
+                throw new IllegalArgumentException("O nome do produto não pode ser nulo ou vazio.");
+            }
+
+            return dao.findByName(name);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Erro na validação dos dados informados: " + e.getMessage());
+            return null;
+        } catch (Exception e) {
+            System.out.println("Erro ao buscar produtos por nome: " + e.getMessage());
+            return null;
+        }
+    }
 }

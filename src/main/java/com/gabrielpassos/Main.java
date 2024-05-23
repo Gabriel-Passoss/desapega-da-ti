@@ -22,7 +22,10 @@ public class Main {
         //productService.delete(1);
         //
         // UPDATE
-        productService.update(1, "Teclado Mecânico ", "description.", 2, 125.99);
+        //productService.update(1, "Mecânico ", "description.", 2, 125.99);
+        //
+        // SEARCH PRODUCT
+        System.out.println(productService.findByName("mec"));
 
     }
 }

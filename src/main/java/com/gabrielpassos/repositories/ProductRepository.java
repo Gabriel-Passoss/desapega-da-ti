@@ -14,4 +14,6 @@ public interface ProductRepository {
     public boolean update(Product product);
 
     public boolean delete(int id);
+
+    public List findByName(String name);
 }
