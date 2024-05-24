@@ -4,19 +4,16 @@
  */
 package com.gabrielpassos.ui;
 
+import com.gabrielpassos.dao.ProductDAO;
+import com.gabrielpassos.entities.Product;
+import com.gabrielpassos.services.ProductService;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author gabrielpassos
  */
 public class IndexPage extends javax.swing.JFrame {
-
-    /**
-     * Creates new form IndexPage
-     */
-    public IndexPage() {
-        initComponents();
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,7 +38,7 @@ public class IndexPage extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        UITable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -217,7 +214,7 @@ public class IndexPage extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        UITable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -228,17 +225,20 @@ public class IndexPage extends javax.swing.JFrame {
                 "Qtd", "Nome do produto", "Preço", "Data de adição"
             }
         ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Float.class, java.lang.Object.class
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
             };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setMaxWidth(100);
+        jScrollPane1.setViewportView(UITable);
+        if (UITable.getColumnModel().getColumnCount() > 0) {
+            UITable.getColumnModel().getColumn(0).setResizable(false);
+            UITable.getColumnModel().getColumn(1).setResizable(false);
+            UITable.getColumnModel().getColumn(2).setResizable(false);
+            UITable.getColumnModel().getColumn(3).setResizable(false);
         }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -289,7 +289,7 @@ public class IndexPage extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -318,6 +318,7 @@ public class IndexPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable UITable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -332,7 +333,33 @@ public class IndexPage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton registerNewTransactionButton;
     // End of variables declaration//GEN-END:variables
+
+    public void loadTable() {
+        ProductDAO productDAO = new ProductDAO();
+        ProductService productService = new ProductService(productDAO);
+
+        var products = productService.findAll();
+        DefaultTableModel tbProducts = (DefaultTableModel) UITable.getModel();
+
+
+        DefaultTableModel defaultTableModel = (DefaultTableModel) this.UITable.getModel();
+        defaultTableModel.setNumRows(0);
+
+        for (Product product: products) {
+            Object[] row = {product.getQuantity(), product.getName(), product.getPrice(), product.getCreatedAt()};
+            tbProducts.addRow(row);
+        }
+
+
+    }
+
+    /**
+     * Creates new form IndexPage
+     */
+    public IndexPage() {
+        initComponents();
+        this.loadTable();
+    }
 }
