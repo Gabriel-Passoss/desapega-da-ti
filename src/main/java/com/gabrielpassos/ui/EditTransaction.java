@@ -5,19 +5,30 @@
 package com.gabrielpassos.ui;
 
 import com.gabrielpassos.dao.ProductDAO;
+import com.gabrielpassos.entities.Product;
 import com.gabrielpassos.services.ProductService;
 
 /**
  *
  * @author leosc
  */
-public class RegisterTransactions extends javax.swing.JFrame {
+public class EditTransaction extends javax.swing.JFrame {
+
+    private final Product product;
 
     /**
      * Creates new form CadastrarTransações
      */
-    public RegisterTransactions() {
+    public EditTransaction(Product product) {
+        this.product = product;
         initComponents();
+        fillInput(product);
+    }
+
+    private void fillInput(Product product) {
+        nameInput.setText(product.getName());
+        priceInput.setText(product.getPrice().toString());
+        quantityInput.setText(String.valueOf(product.getQuantity()));
     }
 
     /**
@@ -87,7 +98,7 @@ public class RegisterTransactions extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(204, 204, 204));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(44, 62, 80));
-        jLabel1.setText("Cadastrar Transações");
+        jLabel1.setText("Editar Transação");
 
         jPanel6.setBackground(new java.awt.Color(220, 221, 225));
         jPanel6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(189, 195, 199), 1, true));
@@ -190,7 +201,7 @@ public class RegisterTransactions extends javax.swing.JFrame {
         registerProductButton.setBackground(new java.awt.Color(46, 204, 113));
         registerProductButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         registerProductButton.setForeground(new java.awt.Color(255, 255, 255));
-        registerProductButton.setText("Cadastrar");
+        registerProductButton.setText("Editar");
         registerProductButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         registerProductButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -301,8 +312,10 @@ public class RegisterTransactions extends javax.swing.JFrame {
     private void registerProductButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerProductButtonActionPerformed
         ProductDAO productDAO = new ProductDAO();
         ProductService productService = new ProductService(productDAO);
+        IndexPage indexPage = new IndexPage();
 
-        productService.create(nameInput.getText(), "aaaaaaaaaa", Integer.parseInt(quantityInput.getText()), Double.parseDouble(priceInput.getText()));
+        productService.update(product.getId(), nameInput.getText(), "aaaaaaaaaa", Integer.parseInt(quantityInput.getText()), Double.parseDouble(priceInput.getText()));
+        indexPage.loadTable();
     }//GEN-LAST:event_registerProductButtonActionPerformed
 
     private void quantityInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quantityInputActionPerformed
@@ -326,23 +339,21 @@ public class RegisterTransactions extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegisterTransactions.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditTransaction.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegisterTransactions.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditTransaction.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegisterTransactions.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditTransaction.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegisterTransactions.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditTransaction.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new RegisterTransactions().setVisible(true);
-            }
-        });
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

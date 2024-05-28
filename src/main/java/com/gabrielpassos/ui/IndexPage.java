@@ -7,7 +7,12 @@ package com.gabrielpassos.ui;
 import com.gabrielpassos.dao.ProductDAO;
 import com.gabrielpassos.entities.Product;
 import com.gabrielpassos.services.ProductService;
+
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.text.NumberFormat;
+import java.util.Currency;
+import java.util.Locale;
 
 /**
  *
@@ -30,15 +35,18 @@ public class IndexPage extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        totalProducts = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        monthBalance = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        reloadButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         UITable = new javax.swing.JTable();
+        jToggleButton1 = new javax.swing.JToggleButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -52,7 +60,7 @@ public class IndexPage extends javax.swing.JFrame {
         registerNewTransactionButton.setBackground(new java.awt.Color(51, 51, 255));
         registerNewTransactionButton.setFont(new java.awt.Font("Inter", 0, 13)); // NOI18N
         registerNewTransactionButton.setForeground(new java.awt.Color(255, 255, 255));
-        registerNewTransactionButton.setText("Nova transação");
+        registerNewTransactionButton.setText("Adicionar item");
         registerNewTransactionButton.setBorder(null);
         registerNewTransactionButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,9 +76,9 @@ public class IndexPage extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(54, 63, 95));
         jLabel2.setText("Total de produtos");
 
-        jLabel3.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(54, 63, 95));
-        jLabel3.setText("12");
+        totalProducts.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
+        totalProducts.setForeground(new java.awt.Color(54, 63, 95));
+        totalProducts.setText("0");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -83,7 +91,7 @@ public class IndexPage extends javax.swing.JFrame {
                         .addComponent(jLabel2))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
-                        .addComponent(jLabel3)))
+                        .addComponent(totalProducts)))
                 .addContainerGap(116, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -92,7 +100,7 @@ public class IndexPage extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
+                .addComponent(totalProducts)
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -100,9 +108,9 @@ public class IndexPage extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(54, 63, 95));
         jLabel4.setText("Balanço mensal");
 
-        jLabel5.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(54, 63, 95));
-        jLabel5.setText("R$ 2.592,25");
+        monthBalance.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
+        monthBalance.setForeground(new java.awt.Color(54, 63, 95));
+        monthBalance.setText("R$ 2.592,25");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -115,7 +123,7 @@ public class IndexPage extends javax.swing.JFrame {
                         .addComponent(jLabel4))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
-                        .addComponent(jLabel5)))
+                        .addComponent(monthBalance)))
                 .addContainerGap(76, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -124,7 +132,7 @@ public class IndexPage extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5)
+                .addComponent(monthBalance)
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -160,6 +168,17 @@ public class IndexPage extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
+        reloadButton.setBackground(new java.awt.Color(51, 51, 255));
+        reloadButton.setFont(new java.awt.Font("Inter", 0, 13)); // NOI18N
+        reloadButton.setForeground(new java.awt.Color(255, 255, 255));
+        reloadButton.setText("Recarregar");
+        reloadButton.setBorder(null);
+        reloadButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reloadButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -177,6 +196,8 @@ public class IndexPage extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(reloadButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(registerNewTransactionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27))))
         );
@@ -188,7 +209,8 @@ public class IndexPage extends javax.swing.JFrame {
                         .addGap(17, 17, 17)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(registerNewTransactionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(registerNewTransactionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(reloadButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -214,19 +236,20 @@ public class IndexPage extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        UITable.setFont(new java.awt.Font("Inter", 0, 13)); // NOI18N
         UITable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Qtd", "Nome do produto", "Preço", "Data de adição"
+                "ID", "Qtd", "Nome do produto", "Preço", "Data de adição"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -237,9 +260,26 @@ public class IndexPage extends javax.swing.JFrame {
         if (UITable.getColumnModel().getColumnCount() > 0) {
             UITable.getColumnModel().getColumn(0).setResizable(false);
             UITable.getColumnModel().getColumn(1).setResizable(false);
+            UITable.getColumnModel().getColumn(1).setPreferredWidth(0);
             UITable.getColumnModel().getColumn(2).setResizable(false);
             UITable.getColumnModel().getColumn(3).setResizable(false);
+            UITable.getColumnModel().getColumn(3).setPreferredWidth(0);
+            UITable.getColumnModel().getColumn(4).setResizable(false);
         }
+
+        jToggleButton1.setText("Remover");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Editar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -247,9 +287,16 @@ public class IndexPage extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLayeredPane3)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(73, 73, 73)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 839, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 839, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(336, 336, 336)
+                        .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(69, 69, 69)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,7 +304,11 @@ public class IndexPage extends javax.swing.JFrame {
                 .addComponent(jLayeredPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -270,7 +321,7 @@ public class IndexPage extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -281,6 +332,42 @@ public class IndexPage extends javax.swing.JFrame {
         
         newTransactionPage.setVisible(true);
     }//GEN-LAST:event_registerNewTransactionButtonActionPerformed
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        DefaultTableModel defaultTableModel = (DefaultTableModel) this.UITable.getModel();
+        ProductDAO productDAO = new ProductDAO();
+        ProductService productService = new ProductService(productDAO);
+
+        if (UITable.getSelectedRow() != -1) {
+            int row = UITable.getSelectedRow();
+            String id = UITable.getModel().getValueAt(row, 0).toString();
+            productService.delete(Integer.parseInt(id));
+
+            defaultTableModel.removeRow(row);
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione um produto para excluir");
+        }
+
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ProductDAO productDAO = new ProductDAO();
+        ProductService productService = new ProductService(productDAO);
+
+        if (UITable.getSelectedRow() != -1) {
+            int row = UITable.getSelectedRow();
+            String id = UITable.getModel().getValueAt(row, 0).toString();
+
+            Product product = productService.findById(Integer.parseInt(id));
+            EditTransaction editTransaction = new EditTransaction(product);
+            editTransaction.setVisible(true);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void reloadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reloadButtonActionPerformed
+        this.loadTable();
+    }//GEN-LAST:event_reloadButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -319,11 +406,10 @@ public class IndexPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable UITable;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLayeredPane jLayeredPane3;
@@ -333,12 +419,19 @@ public class IndexPage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JLabel monthBalance;
     private javax.swing.JButton registerNewTransactionButton;
+    private javax.swing.JButton reloadButton;
+    private javax.swing.JLabel totalProducts;
     // End of variables declaration//GEN-END:variables
 
     public void loadTable() {
         ProductDAO productDAO = new ProductDAO();
         ProductService productService = new ProductService(productDAO);
+        Double monthBalance = 0.0;
+        Locale locale = new Locale("pt", "BR");
+        NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(locale);
 
         var products = productService.findAll();
         DefaultTableModel tbProducts = (DefaultTableModel) UITable.getModel();
@@ -348,10 +441,13 @@ public class IndexPage extends javax.swing.JFrame {
         defaultTableModel.setNumRows(0);
 
         for (Product product: products) {
-            Object[] row = {product.getQuantity(), product.getName(), product.getPrice(), product.getCreatedAt()};
+            Object[] row = {product.getId(), product.getQuantity(), product.getName(), product.getPrice(), product.getCreatedAt()};
             tbProducts.addRow(row);
+            monthBalance += product.getPrice();
         }
 
+        this.totalProducts.setText(String.valueOf(products.size()));
+        this.monthBalance.setText(currencyFormatter.format(monthBalance));
 
     }
 
