@@ -29,6 +29,7 @@ public class EditTransaction extends javax.swing.JFrame {
         nameInput.setText(product.getName());
         priceInput.setText(product.getPrice().toString());
         quantityInput.setText(String.valueOf(product.getQuantity()));
+        descriptionInput.setText(product.getDescription());
     }
 
     /**
@@ -44,15 +45,19 @@ public class EditTransaction extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         nameInput = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         priceInput = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
         quantityInput = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
-        categoryInput = new javax.swing.JTextField();
+        descriptionInput = new javax.swing.JTextField();
         jPanel11 = new javax.swing.JPanel();
         registerProductButton = new javax.swing.JButton();
 
@@ -65,13 +70,19 @@ public class EditTransaction extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(245, 246, 250));
         jPanel1.setForeground(new java.awt.Color(245, 246, 250));
 
+        jLabel1.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(44, 62, 80));
+        jLabel1.setText("Editar Transação");
+
+        jLabel5.setText("Nome");
+
         jPanel5.setBackground(new java.awt.Color(220, 221, 225));
         jPanel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(189, 195, 199), 1, true));
         jPanel5.setForeground(new java.awt.Color(220, 221, 225));
 
         nameInput.setBackground(new java.awt.Color(220, 221, 225));
         nameInput.setForeground(new java.awt.Color(153, 153, 153));
-        nameInput.setText("Nome");
         nameInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nameInputActionPerformed(evt);
@@ -95,10 +106,7 @@ public class EditTransaction extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jLabel1.setBackground(new java.awt.Color(204, 204, 204));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(44, 62, 80));
-        jLabel1.setText("Editar Transação");
+        jLabel4.setText("Preço");
 
         jPanel6.setBackground(new java.awt.Color(220, 221, 225));
         jPanel6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(189, 195, 199), 1, true));
@@ -106,7 +114,6 @@ public class EditTransaction extends javax.swing.JFrame {
 
         priceInput.setBackground(new java.awt.Color(220, 221, 225));
         priceInput.setForeground(new java.awt.Color(153, 153, 153));
-        priceInput.setText("Preço");
         priceInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 priceInputActionPerformed(evt);
@@ -119,7 +126,7 @@ public class EditTransaction extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(priceInput)
+                .addComponent(priceInput, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -130,13 +137,14 @@ public class EditTransaction extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jLabel3.setText("Quantidade");
+
         jPanel12.setBackground(new java.awt.Color(220, 221, 225));
         jPanel12.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(189, 195, 199), 1, true));
         jPanel12.setForeground(new java.awt.Color(220, 221, 225));
 
         quantityInput.setBackground(new java.awt.Color(220, 221, 225));
         quantityInput.setForeground(new java.awt.Color(153, 153, 153));
-        quantityInput.setText("Quantidade");
         quantityInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 quantityInputActionPerformed(evt);
@@ -164,16 +172,17 @@ public class EditTransaction extends javax.swing.JFrame {
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
+        jLabel2.setText("Descrição");
+
         jPanel10.setBackground(new java.awt.Color(220, 221, 225));
         jPanel10.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(189, 195, 199), 1, true));
         jPanel10.setForeground(new java.awt.Color(220, 221, 225));
 
-        categoryInput.setBackground(new java.awt.Color(220, 221, 225));
-        categoryInput.setForeground(new java.awt.Color(153, 153, 153));
-        categoryInput.setText("Categoria");
-        categoryInput.addActionListener(new java.awt.event.ActionListener() {
+        descriptionInput.setBackground(new java.awt.Color(220, 221, 225));
+        descriptionInput.setForeground(new java.awt.Color(153, 153, 153));
+        descriptionInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                categoryInputActionPerformed(evt);
+                descriptionInputActionPerformed(evt);
             }
         });
 
@@ -183,14 +192,14 @@ public class EditTransaction extends javax.swing.JFrame {
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(categoryInput, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE)
+                .addComponent(descriptionInput, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(categoryInput, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(descriptionInput, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -231,38 +240,51 @@ public class EditTransaction extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(61, 61, 61)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(2, 2, 2))
-                            .addComponent(jPanel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(130, Short.MAX_VALUE))
+                        .addGap(61, 61, 61)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(114, 114, 114)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(2, 2, 2))
+                                .addComponent(jPanel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jPanel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jPanel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)))))
+                .addContainerGap(135, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(70, 70, 70)
                 .addComponent(jLabel1)
-                .addGap(22, 22, 22)
+                .addGap(38, 38, 38)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -277,9 +299,8 @@ public class EditTransaction extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(2, 2, 2)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -305,16 +326,16 @@ public class EditTransaction extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_priceInputActionPerformed
 
-    private void categoryInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoryInputActionPerformed
+    private void descriptionInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descriptionInputActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_categoryInputActionPerformed
+    }//GEN-LAST:event_descriptionInputActionPerformed
 
     private void registerProductButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerProductButtonActionPerformed
         ProductDAO productDAO = new ProductDAO();
         ProductService productService = new ProductService(productDAO);
         IndexPage indexPage = new IndexPage();
 
-        productService.update(product.getId(), nameInput.getText(), "aaaaaaaaaa", Integer.parseInt(quantityInput.getText()), Double.parseDouble(priceInput.getText()));
+        productService.update(product.getId(), nameInput.getText(), descriptionInput.getText(), Integer.parseInt(quantityInput.getText()), Double.parseDouble(priceInput.getText()));
         indexPage.loadTable();
     }//GEN-LAST:event_registerProductButtonActionPerformed
 
@@ -357,10 +378,14 @@ public class EditTransaction extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField categoryInput;
+    private javax.swing.JTextField descriptionInput;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
