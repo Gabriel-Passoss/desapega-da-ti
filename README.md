@@ -48,7 +48,7 @@ _**As seguintes bibliotecas foram utilizadas neste projeto:**_
 💡 Diagrama de Entidades e Relacionamentos(DER) para evoluir o projeto.
 
 <div align="center">
-  <img src="./public/DER.png" width="100%">
+  <img src="./DER.png" width="100%">
 </div>
 
 #### <a href="#top" style="color:blu;">Back to top ☝️</a>
