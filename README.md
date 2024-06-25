@@ -1,4 +1,4 @@
-# <h1 id="top" align="center">🖥️ Desapega da **TI** 👾</h1>
+# <h1 id="top" align="center">Desapega da **TI** - Controle de Estoque API</h1>
 
 <p align="center">
   <a href="#sobre">Sobre</a> &#xa0; | &#xa0;
@@ -51,4 +51,4 @@ _**As seguintes bibliotecas foram utilizadas neste projeto:**_
   <img src="./DER.png" width="100%">
 </div>
 
-#### <a href="#top" style="color:blu;">Back to top ☝️</a>
+<a href="#top">🔝 Back to top</a>
