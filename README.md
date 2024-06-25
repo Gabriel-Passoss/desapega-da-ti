@@ -1,4 +1,4 @@
-# <h1 id="top" align="center">Desapega da **TI** - Controle de Estoque API</h1>
+# <h1 id="top" align="center">🖥️ Desapega da **TI** 👾</h1>
 
 <p align="center">
   <a href="#sobre">Sobre</a> &#xa0; | &#xa0;
@@ -6,12 +6,14 @@
   <a href="#-tecnologias">Tecnologias</a> &#xa0; | &#xa0;
   <a href="#-requisitos">Requisitos</a> &#xa0; | &#xa0;
   <a href="#checkered_flag-iniciando">Iniciando</a> &#xa0; | &#xa0;
-  <a href="https://github.com/RodrigoLuigi" target="_blank">Autores</a>
+  <a href="#-feito-por" target="_blank">Autores</a>
 </p>
 
 <br>
 
 ## <img id="sobre" src="https://imgur.com/VhTBbHg.png" alt="imagem de um notebook" align="center" width="30px"> _**O que desenvolvemos neste Projeto?**_
+
+_**Controle de Estoque API**_
 
 📌 Desapega da TI é um trabalho acadêmico no qual desenvolvemos um sistema de gerenciamento de produtos e estoque. Uma aplicação de ponta a ponta com front-end utilizando **Java Swing GUI Builder**, back-end utilizando **Java POO** e banco de dados **MySQL**.
 
@@ -91,7 +93,7 @@ $ docker compose up -d
 
 &#xa0;
 
-_**Feito por**_ 
+## 👥 Feito por 
 
  👨‍🚀 [@Gabriel dos Passos](https://github.com/Gabriel-Passoss)
 
@@ -99,5 +101,7 @@ _**Feito por**_
 
  👨‍🚀 [@Leonardo Schimitt](https://github.com/SchmittLeonardo)
 
-<a href="#top">🔝 Back to top</a>
+</br>
+
+### <a href="#top" style="color:blu;">Back to top 👆</a>
 
