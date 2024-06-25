@@ -5,7 +5,6 @@
   <a href="#gear-features">Features</a> &#xa0; | &#xa0;
   <a href="#-tecnologias">Tecnologias</a> &#xa0; | &#xa0;
   <a href="#-requisitos">Requisitos</a> &#xa0; | &#xa0;
-  <a href="https://github.com/RodrigoLuigi" target="_blank">Author</a>
 </p>
 
 <br>
@@ -24,14 +23,6 @@ Desenvolvemos o projeto utilizando alguns princípios do **SOLID**, com módulos
 :heavy_check_mark: Listar produtos\
 :heavy_check_mark: Pesquisar produtos pelo nome\
 :heavy_check_mark: Pesquisar produto pelo ID
-
-## Diagram
-
-💡 Diagrama de Entidades e Relacionamentos(DER) para evoluir o projeto.
-
-<div align="center">
-  <img src="./DER.png" width="100%">
-</div>
 
 ## 👨‍💻 Tecnologias
 
@@ -52,4 +43,12 @@ _**As seguintes bibliotecas foram utilizadas neste projeto:**_
 - [JDK](https://www.oracle.com/br/java/technologies/downloads/)
 - [Netbeans](https://netbeans.apache.org/front/main/index.html)
 
-<a href="#top">Back to top</a>
+## Diagram
+
+💡 Diagrama de Entidades e Relacionamentos(DER) para evoluir o projeto.
+
+<div align="center">
+  <img src="./DER.png" width="100%">
+</div>
+
+<a href="#top">🔝 Back to top</a>
