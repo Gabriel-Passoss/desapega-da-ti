@@ -3,7 +3,6 @@ package com.gabrielpassos.services;
 import com.gabrielpassos.entities.Product;
 import com.gabrielpassos.dao.ProductDAO;
 
-import java.util.Date;
 import java.util.List;
 
 public class ProductService {
@@ -50,7 +49,7 @@ public class ProductService {
         }
     }
 
-    public List findAll() {
+    public List<Product> findAll() {
         try {
             List<Product> products = dao.findAll();
 

@@ -1,54 +1,62 @@
-# <h1 id="top" align="center">Desapega da **TI** - Controle de Estoque API</h1>
 
-<p align="center">
-  <a href="#sobre">Sobre</a> &#xa0; | &#xa0;
-  <a href="#gear-features">Features</a> &#xa0; | &#xa0;
-  <a href="#-tecnologias">Tecnologias</a> &#xa0; | &#xa0;
-  <a href="#-requisitos">Requisitos</a> &#xa0; | &#xa0;
-</p>
+# Desapega da TI
 
-<br>
+Projeto proposto pela faculdade UNISUL para a matéria de Programação.
 
-## <img id="sobre" src="https://imgur.com/VhTBbHg.png" alt="imagem de um notebook" align="center" width="30px"> _**O que desenvolvemos neste Projeto?**_
+Consiste em um gerenciador de estoque para uma empresa, realizando o CRUD dos produtos
+## Rodando localmente
 
-📌 Desapega da TI é um trabalho acadêmico no qual desenvolvemos um sistema de gerenciamento de produtos e estoque. Uma aplicação de ponta a ponta com front-end utilizando **Java Swing GUI Builder**, back-end utilizando **Java POO** e banco de dados **MySQL**.
+Clone o projeto
 
-Desenvolvemos o projeto utilizando alguns princípios do **SOLID**, com módulos separados para facilitar a escalabilidade e a manutenção da nossa aplicação.
+```bash
+  git clone https://github.com/Gabriel-Passoss/desapega-da-ti.git
+```
 
-## :gear: Features
+Entre no diretório do projeto
 
-:heavy_check_mark: Cadastro de produto\
-:heavy_check_mark: Deletar produto\
-:heavy_check_mark: Editar produto\
-:heavy_check_mark: Listar produtos\
-:heavy_check_mark: Pesquisar produtos pelo nome\
-:heavy_check_mark: Pesquisar produto pelo ID
+```bash
+  cd desapega-da-ti
+```
 
-## 👨‍💻 Tecnologias
+Instale as dependências
 
-As seguintes ferramentas foram usadas neste projeto:
+```bash
+  mvn clean install
+```
 
-- [JAVA](https://docs.oracle.com/en/java/)
-- [MySQL](https://dev.mysql.com/doc/)
+Suba um container MySQL
 
-## :books: Bibliotecas
+```bash
+  docker compose up -d
+```
 
-_**As seguintes bibliotecas foram utilizadas neste projeto:**_
+Adicione a tabela necessária no banco de dados
 
-- [Swing GUI Builder](https://docs.oracle.com/javase/tutorial/uiswing/index.html)
+```bash
+  CREATE TABLE IF NOT EXISTS desapega.products (
+  id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(250) NOT NULL,
+  description VARCHAR(250) NOT NULL,
+  quantity INT NOT NULL,
+  price DOUBLE NOT NULL,
+  created_at DATE NOT NULL,
+  PRIMARY KEY (id))
+  ENGINE = InnoDB
+  AUTO_INCREMENT = 3
+  COLLATE = utf8mb4_0900_ai_ci
+```
 
-## 📝 Requisitos
+Inicie o projeto localmente
 
-- [Git](https://git-scm.com)
-- [JDK](https://www.oracle.com/br/java/technologies/downloads/)
-- [Netbeans](https://netbeans.apache.org/front/main/index.html)
 
-## Diagram
+## Autores
 
-💡 Diagrama de Entidades e Relacionamentos(DER) para evoluir o projeto.
+- [@Gabriel dos Passos](https://github.com/Gabriel-Passoss)
+- [@Rodrigo Luigi](https://github.com/RodrigoLuigi)
+- [@Leonardo Schimitt](https://github.com/SchmittLeonardo)
 
-<div align="center">
-  <img src="./public/DER.png" width="100%">
-</div>
 
-<a href="#top">🔝 Back to top</a>
+## Stack utilizada
+
+Java, Maven, SwingUI, MySQL, Docker
+
