@@ -1,38 +1,82 @@
+# <h1 id="top" align="center">🖥️ Desapega da **TI** 👾</h1>
 
-# Desapega da TI
+<p align="center">
+  <a href="#sobre">Sobre</a> &#xa0; | &#xa0;
+  <a href="#gear-features">Features</a> &#xa0; | &#xa0;
+  <a href="#-tecnologias">Tecnologias</a> &#xa0; | &#xa0;
+  <a href="#-requisitos">Requisitos</a> &#xa0; | &#xa0;
+  <a href="#checkered_flag-iniciando">Iniciando</a> &#xa0; | &#xa0;
+  <a href="#-feito-por" target="_blank">Autores</a>
+</p>
 
-Projeto proposto pela faculdade UNISUL para a matéria de Programação.
+<br>
 
-Consiste em um gerenciador de estoque para uma empresa, realizando o CRUD dos produtos
-## Rodando localmente
+## <img id="sobre" src="https://imgur.com/VhTBbHg.png" alt="imagem de um notebook" align="center" width="30px"> _**O que desenvolvemos neste Projeto?**_
 
-Clone o projeto
+_**Controle de Estoque API**_
+
+📌 Desapega da TI é um trabalho acadêmico no qual desenvolvemos um sistema de gerenciamento de produtos e estoque. Uma aplicação de ponta a ponta com front-end utilizando **Java Swing GUI Builder**, back-end utilizando **Java POO** e banco de dados **MySQL**.
+
+Desenvolvemos o projeto utilizando alguns princípios do **SOLID**, com módulos separados para facilitar a escalabilidade e a manutenção da nossa aplicação.
+
+## :gear: Features
+
+:heavy_check_mark: Cadastro de produto\
+:heavy_check_mark: Deletar produto\
+:heavy_check_mark: Editar produto\
+:heavy_check_mark: Listar produtos\
+:heavy_check_mark: Pesquisar produtos pelo nome\
+:heavy_check_mark: Pesquisar produto pelo ID
+
+## 👨‍💻 Tecnologias
+
+As seguintes ferramentas foram usadas neste projeto:
+
+- [JAVA](https://docs.oracle.com/en/java/)
+- [MAVEN](https://maven.apache.org/guides/)
+- [DOCKER](https://docs.docker.com/)
+- [MySQL](https://dev.mysql.com/doc/)
+
+## :books: Bibliotecas
+
+_**As seguintes bibliotecas foram utilizadas neste projeto:**_
+
+- [Swing GUI Builder](https://docs.oracle.com/javase/tutorial/uiswing/index.html)
+
+## 📝 Requisitos
+
+- [Git](https://git-scm.com)
+- [JDK](https://www.oracle.com/br/java/technologies/downloads/)
+- [Netbeans](https://netbeans.apache.org/front/main/index.html)
+
+## Diagram
+
+💡 Diagrama de Entidades e Relacionamentos(DER) para evoluir o projeto.
+
+<div align="center">
+  <img src="./public/DER.png" width="100%">
+</div>
+
+## :checkered_flag: Iniciando
 
 ```bash
-  git clone https://github.com/Gabriel-Passoss/desapega-da-ti.git
+# Clone este projeto
+$ git clone https://github.com/Gabriel-Passoss/desapega-da-ti.git
+
+# Acesse o projeto
+$ cd desapega-da-ti
+
+# Instale as dependências
+$ mvn clean install
+
+# Inicializando container MySQL
+$ docker compose up -d
 ```
 
-Entre no diretório do projeto
 
 ```bash
-  cd desapega-da-ti
-```
+#Criando a tabela de produtos no banco de dados
 
-Instale as dependências
-
-```bash
-  mvn clean install
-```
-
-Suba um container MySQL
-
-```bash
-  docker compose up -d
-```
-
-Adicione a tabela necessária no banco de dados
-
-```bash
   CREATE TABLE IF NOT EXISTS desapega.products (
   id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(250) NOT NULL,
@@ -46,17 +90,18 @@ Adicione a tabela necessária no banco de dados
   COLLATE = utf8mb4_0900_ai_ci
 ```
 
-Inicie o projeto localmente
 
+&#xa0;
 
-## Autores
+## 👥 Feito por 
 
-- [@Gabriel dos Passos](https://github.com/Gabriel-Passoss)
-- [@Rodrigo Luigi](https://github.com/RodrigoLuigi)
-- [@Leonardo Schimitt](https://github.com/SchmittLeonardo)
+ 👨‍🚀 [@Gabriel dos Passos](https://github.com/Gabriel-Passoss)
 
+ 👨‍🚀 [@Rodrigo Luigi](https://github.com/RodrigoLuigi)
 
-## Stack utilizada
+ 👨‍🚀 [@Leonardo Schimitt](https://github.com/SchmittLeonardo)
 
-Java, Maven, SwingUI, MySQL, Docker
+</br>
+
+### <a href="#top" style="color:blu;">Back to top 👆</a>
 
